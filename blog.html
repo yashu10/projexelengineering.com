@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & News | Projexel Engineering</title>
+    <meta name="description" content="Read the latest engineering articles, technology reviews, and company news from Projexel Engineering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .blog-card-image {
+            transition: transform 0.6s ease;
+        }
+        .glass-panel:hover .blog-card-image {
+            transform: scale(1.05);
+        }
+        #blogSearch:focus {
+            border-color: var(--clr-primary) !important;
+            box-shadow: 0 0 0 4px rgba(8, 65, 108, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Placeholder -->
+    <script src="components/header.js"></script>
+
+    <!-- Page Header -->
+    <header class="page-header pattern-bg">
+        <div class="container">
+            <h1 class="page-title fade-in-up is-visible">Latest <span class="text-gradient">Insights</span></h1>
+            <p class="page-subtitle fade-in-up delay-1 is-visible">Stay updated with industrial engineering trends, technological innovations, and company achievements.</p>
+        </div>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog-section" style="padding: 80px 0; background-color: var(--clr-surface-light);">
+        <div class="container">
+            
+            <!-- Controls (Search & Filters) -->
+            <div class="glass-panel fade-in-up is-visible" style="padding: 2rem; border-radius: var(--radius-md); margin-bottom: 4rem; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center;">
+                
+                <!-- Category Filters -->
+                <div class="portfolio-filter" style="margin-bottom: 0; padding-top: 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="filter-btn active" data-category="all">All Articles</button>
+                    <button class="filter-btn" data-category="Industrial Trends">Industrial Trends</button>
+                    <button class="filter-btn" data-category="Technology">Technology</button>
+                    <button class="filter-btn" data-category="Company News">Company News</button>
+                </div>
+
+                <!-- Search Input -->
+                <div style="position: relative; width: 100%; max-width: 320px;">
+                    <input type="text" id="blogSearch" placeholder="Search articles..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border-radius: 50px; border: 1px solid rgba(0,0,0,0.1); outline: none; transition: var(--transition); background: white; font-family: inherit; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted); font-size: 1.1rem;"><i class="ri-search-line"></i></span>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blogGrid" class="portfolio-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                <!-- Blog cards rendered dynamically via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="noResults" style="display: none; text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 3rem; margin-bottom: 1.5rem;">🔍</div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">No Articles Found</h3>
+                <p style="color: var(--clr-text-muted);">Try adjusting your filters or search keywords.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <script src="components/footer.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/blog-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogGrid = document.getElementById('blogGrid');
+            const noResults = document.getElementById('noResults');
+            const searchInput = document.getElementById('blogSearch');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            let activeCategory = 'all';
+            let searchQuery = '';
+
+            function renderBlogs() {
+                const filtered = blogPosts.filter(post => {
+                    const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
+                    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                          post.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                          post.category.toLowerCase().includes(searchQuery.toLowerCase());
+                    return matchesCategory && matchesSearch;
+                });
+
+                if (filtered.length === 0) {
+                    blogGrid.style.display = 'none';
+                    noResults.style.display = 'block';
+                } else {
+                    blogGrid.style.display = 'grid';
+                    noResults.style.display = 'none';
+                    
+                    blogGrid.innerHTML = filtered.map((post) => `
+                        <div class="glass-panel fade-in-up is-visible" style="padding: 0; overflow: hidden; border-radius: var(--radius-lg); transition: var(--transition); display: flex; flex-direction: column; height: 100%; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                            <div style="overflow: hidden; height: 220px;">
+                                <div style="height: 100%; background-image: url('${post.image}'); background-size: cover; background-position: center;" class="blog-card-image"></div>
+                            </div>
+                            <div style="padding: 2.2rem; display: flex; flex-direction: column; flex-grow: 1;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <span style="color: var(--clr-primary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">${post.category}</span>
+                                    <span style="color: var(--clr-text-muted); font-size: 0.8rem;">${post.readTime}</span>
+                                </div>
+                                <h3 style="font-family: var(--font-heading); font-size: 1.35rem; line-height: 1.4; margin-bottom: 1rem; color: var(--clr-text); transition: var(--transition); cursor: pointer;" onclick="location.href='blog-detail.html?id=${post.id}'">
+                                    ${post.title}
+                                </h3>
+                                <p style="color: var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; flex-grow: 1; line-height: 1.6;">${post.summary}</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1.2rem; margin-top: auto;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div style="width: 36px; height: 36px; background: rgba(8,65,108,0.1); color: var(--clr-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">
+                                            ${post.author.split(' ').map(n => n[0]).join('')}
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 0.875rem; font-weight: 600; color: var(--clr-text);">${post.author}</div>
+                                            <div style="font-size: 0.75rem; color: var(--clr-text-muted);">${post.date}</div>
+                                        </div>
+                                    </div>
+                                    <a href="blog-detail.html?id=${post.id}" style="color: var(--clr-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;">
+                                        Read More <span style="transition: transform 0.3s;" class="arrow">&rarr;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Category filter click events
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCategory = btn.getAttribute('data-category');
+                    renderBlogs();
+                });
+            });
+
+            // Search input event
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderBlogs();
+            });
+
+            // Initial Render
+            renderBlogs();
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

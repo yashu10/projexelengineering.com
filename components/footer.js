@@ -13,7 +13,7 @@ document.write(`
                 <a href="services.html">Our Services</a>
                 <a href="projects.html">Portfolio</a>
                 <a href="contact.html">Contact Us</a>
-               
+                <a href="assets/images/company-profile.pdf" target="_blank" style="display: inline-flex; align-items: center; gap: 0.35rem;"><i class="ri-file-pdf-line" style="color: #ef4444;"></i> Brochure</a>
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>

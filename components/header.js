@@ -9,6 +9,8 @@ document.write(`
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="assets/images/company-profile.pdf" target="_blank" style="display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600; color: var(--clr-primary) !important;"><i class="ri-file-pdf-line" style="font-size: 1.15rem; color: #ef4444; vertical-align: middle;"></i> Brochure</a>
                 <a href="contact.html" class="btn btn-primary">Contact Us</a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
