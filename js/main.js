@@ -32,15 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Navbar Scroll Effect
+        // Navbar Scroll Effect (Sticky on Scroll Up)
         const navbar = document.getElementById('navbar');
         if (navbar) {
+            let lastScrollTop = 0;
+            const scrollThreshold = 100;
+            
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const navLinks = document.getElementById('nav-links');
+                const isMobileMenuOpen = navLinks && navLinks.classList.contains('active');
+                
+                // Shrunk state padding/shadow
+                if (scrollTop > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
+                
+                // Show/hide based on scroll direction
+                if (scrollTop > lastScrollTop && scrollTop > scrollThreshold && !isMobileMenuOpen) {
+                    // Scrolling down - hide navbar
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    // Scrolling up - show navbar
+                    navbar.classList.remove('nav-hidden');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
             });
         }
 
