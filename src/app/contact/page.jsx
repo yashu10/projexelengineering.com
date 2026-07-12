@@ -1,0 +1,135 @@
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import ClientScripts from '@/components/ClientScripts';
+
+export const metadata = {
+  title: "Contact Us | Projexel Engineering - Get a Quote in Ahmedabad",
+  description: "Contact Projexel Engineering today for expert EPC, mechanical fabrication, and E&I solutions. Get in touch with our team in Ahmedabad, Gujarat.",
+  keywords: "contact Projexel Engineering, EPC contractor contact, request quote EPC, engineering firm Ahmedabad, contact details Projexel",
+};
+
+export default function ContactPage() {
+  return (
+    <>
+      <Header />
+      
+    {/*  Navbar Placeholder  */}
+    
+
+    {/*  Page Header  */}
+    <header className="page-header pattern-bg">
+        <div className="container">
+            <h1 className="page-title fade-in-up">CONTACT <span className="text-gradient">US</span></h1>
+            <p className="page-subtitle fade-in-up delay-1">Let's discuss how we can bring your next industrial project to life.</p>
+        </div>
+    </header>
+
+    <section className="contact-section" style={{"padding":"100px 0","backgroundColor":"var(--clr-surface-light)"}}>
+        <div className="container">
+            <div className="contact-wrapper">
+                {/*  Contact Info  */}
+                <div className="contact-info slide-in-left">
+                    <div className="glass-panel contact-info-card">
+                        <span className="section-tag">Get in Touch</span>
+                        <h2 className="section-title" style={{"fontSize":"2rem","marginBottom":"2rem"}}>Contact Information</h2>
+                        
+                            <div className="info-item">
+                                <div className="info-icon">📍</div>
+                                <div className="info-content">
+                                    <h4>Our Office</h4>
+                                    <p>1004, Sudarshan Saket, Behind Godrej Garden City,<br />Chainpur Road, Jagatpur, Ahmedabad – 382470</p>
+                                    <div style={{"marginTop":"1.5rem"}}>
+                                        <a href="https://www.google.com/maps/dir//Sudarshan+Saket,+Ahmedabad" target="_blank" className="btn btn-primary" style={{"fontSize":"0.9rem","padding":"0.6rem 1.2rem"}}>Get Directions &rarr;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">📞</div>
+                            <div className="info-content">
+                                <h4>Call Us</h4>
+                                <p><a href="tel:+918000369880">+91 80003 69880</a></p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">✉️</div>
+                            <div className="info-content">
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:projexel.engr@gmail.com">projexel.engr@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div className="info-item">
+                            <div className="info-icon">🕒</div>
+                            <div className="info-content">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/*  Contact Form  */}
+                <div className="contact-form slide-in-right">
+                    <div className="glass-panel contact-form-card">
+                        <h3 style={{"fontFamily":"var(--font-heading)","fontSize":"1.8rem","marginBottom":"2rem"}}>Send us a Message</h3>
+                        <form id="contactForm">
+                            <div style={{"display":"grid","gridTemplateColumns":"1fr 1fr","gap":"1.5rem"}}>
+                                <div className="form-group">
+                                    <label className="form-label">Full Name</label>
+                                    <input type="text" id="contactName" className="form-control" placeholder="John Doe" required />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Email Address</label>
+                                    <input type="email" id="contactEmail" className="form-control" placeholder="john@company.com" required />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Subject</label>
+                                <input type="text" id="contactSubject" className="form-control" placeholder="Project Inquiry" required />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Message</label>
+                                <textarea id="contactMessage" className="form-control" placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <button type="submit" className="btn btn-primary btn-lg" style={{"width":"100%"}}>Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/*  Map Section  */}
+    <section className="map-section" style={{"padding":"0 0 80px 0","backgroundColor":"var(--clr-surface-light)"}}>
+        <div className="container">
+            <div style={{"marginBottom":"2rem","textAlign":"center"}}>
+                <h3 style={{"fontSize":"1.8rem"}}>Find Us on Map</h3>
+                <p style={{"color":"var(--clr-text-muted)"}}>Visit our office for project discussions and consultations.</p>
+            </div>
+            <div style={{"height":"500px","borderRadius":"16px","overflow":"hidden","border":"1px solid rgba(0,0,0,0.1)","boxShadow":"0 10px 30px rgba(0,0,0,0.05)"}}>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.96739958784!2d72.5458143!3d23.1074127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83005eaed8a5%3A0xc3f605a91176b6b7!2sSudarshan%20Saket!5e0!3m2!1sen!2sin!4v1713714000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style={{"border":"0"}} 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    {/*  Footer Placeholder  */}
+    
+
+    
+
+      <Footer />
+      <ClientScripts />
+    </>
+  );
+}
